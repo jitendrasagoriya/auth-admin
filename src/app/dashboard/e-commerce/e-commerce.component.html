@@ -1,0 +1,140 @@
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
+	<div class="col">
+		<div class="card radius-1">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<div>
+						<p class="mb-0 text-secondary">Total Apps</p>
+						<h4 class="my-1">{{dashBoard.applicationCount}}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col">
+		<div class="card radius-10">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<div>
+						<p class="mb-0 text-secondary">Total User</p>
+						<h4 class="my-1">{{dashBoard.userCount}}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="card radius-10">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<div>
+						<p class="mb-0 text-secondary">New User</p>
+						<h4 class="my-1">{{dashBoard.newUser}}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="card radius-10">
+			<div class="card-body">
+				<div class="d-flex align-items-center">
+					<div>
+						<p class="mb-0 text-secondary">Logged-In User</p>
+						<h4 class="my-1">{{dashBoard.loggedInCount}}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+<!--end row-->
+
+
+<div class="row">
+	<div class="col-12 col-xl-12 col-xxl-4 d-flex">
+		<div class="card radius-10 w-100">
+			<div class="card-body">
+				<div class="row g-3 align-items-top">
+					<div class="col-9">
+						<h5 class="mb-0">New User</h5>
+					</div>
+
+				</div>
+			</div>
+			<div class="new-customer-list p-3 mb-3" [perfectScrollbar]>
+				<div class="d-flex align-items-center gap-3 customer-list-item" *ngFor="let user of dashBoard.newUsers">
+					<img src="assets/images/avatars/avatar-1.png" class="rounded-circle" width="50" height="50" alt="">
+					<div>
+						<h6 class="mb-0">{{user.userName}}</h6>
+						<p class="mb-0 font-13">USER ID: {{user.userId}}</p>
+						<p class="mb-0 font-13">REGISTERED ON: {{user.creationDate | date:'dd/MM/yyyy'}}</p>
+					</div>
+					 
+					<a href="javascript:;" (click)="activate(user.userId)" class="d-flex align-items-center gap-3 fs-6 ms-auto" aria-label="Message">
+						<div class="font-22"> <i class="lni lni-circle-plus"></i>
+						</div>
+					</a>
+
+					<a href="javascript:;" (click)="remove(user.userId)" class="d-flex" aria-label="Message">
+						<div class="font-22"> <i class="lni lni-circle-minus"></i>
+						</div>
+					</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="col-12 col-xl-12 col-xxl-8 d-flex">
+		<div class="card radius-10 w-100">
+			<div class="card-body">
+				<div class="row g-3 align-items-center">
+					<div class="col-9">
+						<h5 class="mb-0">Applications</h5>
+					</div>
+				</div>
+				<div class="table-responsive mt-4">
+					<table class="table align-middle mb-0 table-hover" id="Transaction-History">
+						<thead class="table-light">
+							<tr>
+								<th>Name</th>
+								<th>Discrption</th>
+								<th>Salt</th>
+								<th>Date</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let d of dashBoard.data">
+								<td>
+									<div class="d-flex align-items-center">
+										<div class="">
+											<img src="assets/images/avatars/avatar-1.png" class="rounded-circle"
+												width="46" height="46" alt="" />
+										</div>
+										<div class="ms-2">
+											<h6 class="mb-1 font-14">{{d.application.appName}}</h6>
+											<p class="mb-0 font-13 text-secondary">Id #{{d.application.id}}</p>
+											<p class="mb-0 font-13 text-secondary">Access #{{d.application.access}}</p>
+										</div>
+									</div>
+								</td>
+								<td>{{d.application.description}}</td>
+								<td>{{d.application.salt}}</td>
+								<td>{{d.application.onBoardTime | date:'dd/MM/yyyy'}}</td>
+								<td>
+									<div class="badge rounded-pill alert-success w-100 ">Active</div>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
