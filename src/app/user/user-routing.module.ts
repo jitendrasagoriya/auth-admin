@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './details/details.component';
 import { NewComponent } from './new/new.component';
 import { ViewComponent } from './view/view.component';
+import {EditComponent} from "./edit/edit.component";
 
 const routes: Routes = [
   {
@@ -24,20 +25,12 @@ const routes: Routes = [
       } ,
       {
         path: 'details/:id',
-        component: DetailsComponent,
-        data: {
-          title: 'Details',
-          edit:false
-        }
+        component: DetailsComponent
       } ,
       {
         path: 'edit/:id',
-        component: DetailsComponent,
-        data: {
-          title: 'Edit',
-          edit:true
-        }
-      } 
+        component: EditComponent
+      }
     ]
   }
 ];

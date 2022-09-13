@@ -1,15 +1,27 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 
 import { UserProfileRoutingModule } from './user-profile-routing.module';
-import { UserProfileComponent } from './user-profile.component';
+import {NgModalUserDetailsEditConfirm, UserProfileComponent} from './user-profile.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {AutocompleteLibModule} from "angular-ng-autocomplete";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {PerfectScrollbarModule} from "ngx-perfect-scrollbar";
 
 
 @NgModule({
-  declarations: [UserProfileComponent],
+  declarations: [UserProfileComponent,NgModalUserDetailsEditConfirm],
   imports: [
     CommonModule,
     UserProfileRoutingModule,
+    NgbModule,
+    AutocompleteLibModule,
+    ReactiveFormsModule,
+    FormsModule,
+    PerfectScrollbarModule,
+  ],
+  providers:[
+    DatePipe
   ]
 })
 export class UserProfileModule { }

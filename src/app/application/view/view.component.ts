@@ -19,7 +19,7 @@ import { ApplicationService } from '../application.service';
     <button type="button" class="btn-close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-    <p><strong>Are you sure you want to delete application?</strong></p>  
+    <p><strong>Are you sure you want to delete application?</strong></p>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('User canceled!!')">Cancel</button>
@@ -104,7 +104,7 @@ export class ViewComponent implements OnInit {
     let result = this.originalApplication;
       if (this.isSearched) {
         result = this.searchApplication;
-      } 
+      }
     this.pageing(result);
   }
 
@@ -133,24 +133,24 @@ export class ViewComponent implements OnInit {
   }
 
 
-  searchName(event: any): void {    
-    try { 
+  searchName(event: any): void {
+    try {
       console.log('Search Stirng - >' + event.target.value);
-      if( event.target.value.length == 0 ){ 
-        this.isSearched =false;
+      if( event.target.value.length == 0 ){
+        this.isSearched = false;
         this.totalDataSize = this.originalApplication.length;
-      this.currentPage = 1; 
-        this.pageing(this.originalApplication) 
+      this.currentPage = 1;
+        this.pageing(this.originalApplication)
         return;
       }
       let result = this.originalApplication;
       if (this.isSearched) {
         result = this.searchApplication;
-      } 
+      }
       this.isSearched = true;
-      this.searchApplication = result ? result.filter(item => item.appName.search(new RegExp(event.target.value)) > -1) : []     
+      this.searchApplication = result ? result.filter(item => item.appName.search(new RegExp(event.target.value)) > -1) : []
       this.totalDataSize = this.searchApplication.length;
-      this.currentPage = 1;   
+      this.currentPage = 1;
       this.pageing(this.searchApplication);
     } catch (error) {
       console.error(error);

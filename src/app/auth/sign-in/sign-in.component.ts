@@ -11,17 +11,17 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss'] 
+  styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
 
-  
+
   loginForm: FormGroup;
   userName: string = '';
   password!: string;
   submitted = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, 
+  constructor(private router: Router, private route: ActivatedRoute,
      private authService: AuthService
     , private notifier: NotifierService, private formBuilder: FormBuilder,
     private messageService: MessageService) {
@@ -32,7 +32,7 @@ export class SignInComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get f() {return this.loginForm.controls;}
 
   onSignIn() {
 
@@ -53,7 +53,8 @@ export class SignInComponent implements OnInit {
           localStorage.setItem('token', loginResponse.token)
           localStorage.setItem('userName', loginResponse.userName)
           localStorage.setItem('userType', loginResponse.userType)
-          this.router.navigate(['dashboard/']);
+          localStorage.setItem('userId',loginResponse.userId)
+          this.router.navigate(['dashboard/']).then(r => {});
           this.submitted = false;
         } else {
           this.notifier.notify('error', this.messageService.getMostResentMessage());
@@ -64,7 +65,7 @@ export class SignInComponent implements OnInit {
 
   }
 
-  // On Forgotpassword link click
+  // On Forgot password link click
   onForgotpassword() {
     this.router.navigate(['forgot-password'], { relativeTo: this.route.parent });
   }

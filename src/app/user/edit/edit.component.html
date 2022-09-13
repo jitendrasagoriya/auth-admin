@@ -20,49 +20,56 @@
       </div>
       <div class="card-body">
         <div class="border p-3 rounded">
-          <form class="row g-3 needs-validation"   >
+          <form class="row g-3 needs-validation"  [formGroup] ="userEditForm" (ngSubmit)="onUpdate()" >
 
             <div class="col-12">
               <label class="form-label">User ID</label>
-              <input type="text" class="form-control" placeholder="User Id"  [value]="user.id"  disabled  />
+              <input type="text" class="form-control" placeholder="User Id"  formControlName="id" />
             </div>
 
             <div class="col-12">
               <label class="form-label">UserName</label>
-              <input type="text" class="form-control" placeholder="User Name" [value]="user.name" disabled />
+              <input type="text" class="form-control" placeholder="User Name" formControlName="name"/>
             </div>
             <div class="col-12">
               <label class="form-label">Application Name</label>
-              <input type="text" class="form-control" placeholder="Application Name"  [value]="user.applicationName"  disabled />
+              <input type="text" class="form-control" placeholder="Application Name"  formControlName="appName" />
+              <input type="hidden" class="form-control"  formControlName="appId" />
             </div>
 
             <div class="col-12">
               <label class="form-label">Registration Date</label>
-              <input type="text" class="form-control" placeholder="Application Name"  [value]="user.date | date:'dd/MM/YYYY' "  disabled />
+              <input type="text" class="form-control" placeholder="Application Name" formControlName="date" />
             </div>
             <div class="col-12">
               <label class="form-label">User Type</label>
-              <input type="text" class="form-control" placeholder="User Type"  [value]="user.type"  disabled />
+              <input type="text" class="form-control" placeholder="User Type" formControlName="type" />
             </div>
 
             <div class="col-12">
               <label class="form-label">Status</label>
-              <input type="text" class="form-control" placeholder="User Status"  [value]="user.active?'Active':'In-Active'"  disabled />
+              <select class="form-select"  formControlName="active" >
+                <option value="true" [selected]="user.active">Active</option>
+                <option value="false" [selected]="!user.active" selected>In-Active</option>
+              </select>
             </div>
 
             <div class="col-12">
               <label class="form-label">Logged In</label>
-              <input type="text" class="form-control" placeholder="User Status"  [value]="user.logout?'Logged Out':'Logged In'"  disabled />
+              <select class="form-select"  formControlName="loggedOut" >
+                <option value="true" [selected]="!user.logout">Logged In</option>
+                <option value="false" [selected]="user.logout">Logged Out</option>
+              </select>
             </div>
 
             <div class="row row-cols-auto g-3">
 
-              <div class="col"  >
-                <button type="button" class="btn btn-outline-primary px-5" (click)="edit()">Edit</button>
+              <div class="col">
+                <button type="submit" class="btn btn-outline-primary px-5" [disabled]="submitted">Update</button>
               </div>
 
-              <div class="col"  >
-                <button type="button" class="btn btn-outline-primary px-5" (click)="back()">Back</button>
+              <div class="col">
+                <button type="button" class="btn btn-outline-primary px-5" (click)="cancel()">Back</button>
               </div>
 
             </div>

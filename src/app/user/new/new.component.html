@@ -1,1 +1,78 @@
-<p>new works!</p>
+<!--breadcrumb-->
+<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+	<div class="breadcrumb-title pe-3">Application</div>
+	<div class="ps-3">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb mb-0 p-0">
+				<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+				</li>
+				<li class="breadcrumb-item active" aria-current="page">Register</li>
+			</ol>
+		</nav>
+	</div>
+	 
+</div>
+<!--end breadcrumb-->
+<div class="row">
+	<div class="col-xl-6 mx-auto">
+		<div class="card">
+			<div class="card-body">
+				<div class="border p-3 rounded">
+					<h6 class="mb-0 text-uppercase">New User</h6>
+					<hr/>
+					<form class="row g-3 needs-validation" [formGroup] ="registerUserForm" (ngSubmit)="onSubmit()">
+                        <div class="col-12">
+							<label class="form-label">Application Name </label>
+							<ng-autocomplete  
+                                [data]="data"
+                                [searchKeyword]="keyword"
+                                placeholder="Select Allication"
+                                (selected)='selectEvent($event)'
+                                (inputChanged)='onChangeSearch($event)'
+                                (inputFocused)='onFocused($event)'
+                                [itemTemplate]="itemTemplate"
+                                [notFoundTemplate]="notFoundTemplate">                                 
+                                </ng-autocomplete>
+
+                                <ng-template #itemTemplate let-item  >
+                                <a [innerHTML]="item.name"></a>
+                                </ng-template>
+
+                                <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+						</div>
+						<div class="col-12">
+							<label class="form-label">Email </label>
+							<input type="text" class="form-control"  formControlName="email"  required/>
+						</div>
+						<div class="col-12">
+							<label class="form-label">Password</label>
+							<input type="text" class="form-control" formControlName="password"  required/>
+						</div>
+
+                        <div class="col-12">
+							<label class="form-label">Confirm Password</label>
+							<input type="text" class="form-control" formControlName="confirm"  required/>
+						</div>
+						<div class="col-6">
+							<div class="form-check">
+								 
+							</div>
+						</div>
+						<div class="col-6 text-end" style="color: red;">all field are required. 
+						</div>
+						<div class="col-12">
+							<div class="d-grid">
+								<button type="submit" class="btn btn-primary" [disabled]="submitted">Register</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		 
+		 
+	</div>
+</div>
+<!--end row-->

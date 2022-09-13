@@ -1,10 +1,10 @@
  <!--start top header-->
- <header class="top-header">        
+ <header class="top-header">
 	<nav class="navbar navbar-expand">
 	  <div (click)="toggleSidebar()" class="mobile-toggle-icon d-xl-none">
 		  <i class="bi bi-list"></i>
 		</div>
-		 
+
 		<div class="search-toggle-icon d-xl-none ms-auto">
 		  <i class="bi bi-search"></i>
 		</div>
@@ -43,16 +43,16 @@
 					 </div>
 				   </a>
 				</li>
-				<li *ngIf="isUserLoggedIn">
+			<!--	<li *ngIf="isUserLoggedIn">
 				  <a class="dropdown-item" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" href="#" (click)="$event.preventDefault()">
 					 <div class="d-flex align-items-center">
 					   <div class="setting-icon"><i class="bi bi-gear-fill"></i></div>
 					   <div class="setting-text ms-3"><span>Setting</span></div>
 					 </div>
 				   </a>
-				</li>
-				 
-				 
+				</li>-->
+
+
 				<li ><hr class="dropdown-divider"></li>
 				<li *ngIf="isUserLoggedIn">
 				  <a class="dropdown-item" href="javascript:void(0);" (click)="logout()">
@@ -73,9 +73,9 @@
 				  </li>
 			</ul>
 		  </li>
-		  
-		  
-		  
+
+
+
 		  </ul>
 		  </div>
 	</nav>

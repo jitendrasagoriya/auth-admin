@@ -22,7 +22,12 @@ export class ApplicationService {
 
   public applicationList(token: string): Observable<Application[] | any> {
     const requestedUrl = this.url.application();
-    const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER-TOKEN': token, 'Content-Type': 'application/json' }) };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-AUTH-LOG-HEADER-TOKEN': token,
+        'Content-Type': 'application/json'
+      })
+    };
     return this.http.get<Application[]>(requestedUrl, httpOptions)
       .pipe(
         catchError(this.handleError('applicationList'))
@@ -31,7 +36,12 @@ export class ApplicationService {
 
   public applicationById(id: string, token: string): Observable<Application | any> {
     const requestedUrl = this.url.application() + id;
-    const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER-TOKEN': token, 'Content-Type': 'application/json' }) };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-AUTH-LOG-HEADER-TOKEN': token,
+        'Content-Type': 'application/json'
+      })
+    };
     return this.http.get<Application>(requestedUrl, httpOptions)
       .pipe(
         catchError(this.handleError('applicationById'))
@@ -40,7 +50,12 @@ export class ApplicationService {
 
   public newApplication(request: ApplicationRequest, _token: string): Observable<Application | any> {
     const requestedUrl = this.url.application();
-    const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER-APP-TOKEN': _token, 'Content-Type': 'application/json' }) };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-AUTH-LOG-HEADER-APP-TOKEN': _token,
+        'Content-Type': 'application/json'
+      })
+    };
     return this.http.post(requestedUrl, request, httpOptions)
       .pipe(
         catchError(this.handleError('newApplication'))
@@ -49,16 +64,26 @@ export class ApplicationService {
 
   public update(request: Application, _token: string): Observable<Application | any> {
     const requestedUrl = this.url.application();
-    const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER-APP-TOKEN': _token, 'Content-Type': 'application/json' }) };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-AUTH-LOG-HEADER-APP-TOKEN': _token,
+        'Content-Type': 'application/json'
+      })
+    };
     return this.http.put(requestedUrl, request, httpOptions)
       .pipe(
         catchError(this.handleError('newApplication'))
       );
   }
 
-  public delete(id:string,_token:string):Observable<boolean|any> {
-    const requestedUrl = this.url.application()+id;
-    const httpOptions = { headers: new HttpHeaders({ 'X-AUTH-LOG-HEADER-TOKEN': _token, 'Content-Type': 'application/json' }) };
+  public delete(id: string, _token: string): Observable<boolean | any> {
+    const requestedUrl = this.url.application() + id;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'X-AUTH-LOG-HEADER-TOKEN': _token,
+        'Content-Type': 'application/json'
+      })
+    };
     return this.http.delete<boolean>(requestedUrl, httpOptions)
       .pipe(
         catchError(this.handleError('delete'))
