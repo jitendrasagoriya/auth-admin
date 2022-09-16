@@ -25,7 +25,7 @@
               "chart.js",
               "highcharts"
             ],
-            "outputPath": "dist/Skodash",
+            "outputPath": "dist/auth-admin",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -95,10 +95,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Skodash:build:production"
+              "browserTarget": "auth-admin:build:production"
             },
             "development": {
-              "browserTarget": "Skodash:build:development"
+              "browserTarget": "auth-admin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -106,7 +106,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Skodash:build"
+            "browserTarget": "auth-admin:build"
           }
         },
         "test": {
@@ -130,5 +130,5 @@
       }
     }
   },
-  "defaultProject": "Skodash"
+  "defaultProject": "auth-admin"
 }
